@@ -27,22 +27,20 @@ Case 4: -a -b
 
 //30分，不知道哪里有问题 
 #include<stdio.h>
-#include<iostream>
 #include<map> 
 #include<string>
-#include<cstring>
 #include<vector>
 using namespace std;
 vector<string> cut(string old){
 	string nnew;
 	vector<string> v;
 	while(old[0]==' ')old=old.substr(1);
-	int a=old.find(' ');
+	int a=old.find(" ");
 	while(a!=string::npos){
 		nnew=old.substr(0,a);
 		v.push_back(nnew);
 		old=old.substr(a+1);
-		a=old.find(' ');
+		a=old.find(" ");
 	}
 	v.push_back(old);
 	return v;
