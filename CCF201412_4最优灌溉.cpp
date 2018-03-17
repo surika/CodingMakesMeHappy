@@ -41,27 +41,24 @@ int father[MAXN];
 int result;
 bool vis[MAXN]={false};
 vector<edge> vec;
-int temp;
 bool cmp(edge a,edge b){
 	return a.cost<b.cost;
 }
-int find(int a){
-	int x=a;
-	while(a!=father[a])a=father[a];
-	int z=x;
-	while(z!=father[z]){
-		z=father[z];
-		father[z]=a;
+int find(int x){
+	int a=x;
+	while(x!=father[x])x=father[x];
+	while(a!=father[a]){
+		int z=a;
+		a=father[a];
+		father[z]=x;
 	} 
-	return a;
+	return x;
 }
-void uunion(int a,int b){
-	int fa=father[a];
-	int fb=father[b];
-	if(fa!=fb)father[b]=a;
+void Union(int a,int b){
+	int fa=find(a);
+	int fb=find(b);
+	if(fa!=fb)father[fa]=fb;
 }
-
-
 int main(){
 	result=0;
 	int n,m,total=0;
@@ -77,10 +74,11 @@ int main(){
 		int a=vec[i].from;
 		int b=vec[i].to;
 		if(find(a)!=find(b)){
-			uunion(a,b);
+			Union(a,b);
 			result+=vec[i].cost;
 		}
 	}
 	cout<<result;
+	
 	return 0;
 }

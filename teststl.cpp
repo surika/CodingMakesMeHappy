@@ -2,17 +2,31 @@
 用来测试各种写法是否正确的测试专用程序
 Practise makes perfect. 
 */ 
-#include<iostream>
-#include<string>
-#include<map>
+#include<bits/stdc++.h>
 using namespace std;
 
-
+string int2string(int n){
+	stringstream ss;
+	ss<<n;
+	return ss.str();
+}
+int string2int(string str){
+	stringstream ss(str);
+	int temp;
+	ss>>temp;
+	return temp;
+}
+map<char,string> m;
 int main(){
-	map<char,string> m;
+	
 	m['a']="1";
 	if(m.find('b')==m.end())cout<<"yes\n";
 	else cout<<"no\n";
+	
+	int s;
+	cin>>s;
+	string t=int2string(s);
+	cout<<t.find('3');
 }
 
 void map(){
